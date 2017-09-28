@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
-import com.bluelinelabs.conductor.RouterTransaction
 import io.github.dector.rldb.R
 import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
 import io.github.dector.rldb.domain.Uuid
-import io.github.dector.rldb.favourites.view.controllers.FavouritesController
 import io.github.dector.rldb.tools.GlideApp
 import kotlinx.android.synthetic.main.controller_item_details.view.*
 
@@ -47,9 +45,6 @@ class ItemDetailsController(private val itemUuid: Uuid) : Controller() {
 
             val messageText = if (updatedItem.metaFavourite) "Item added to favourites" else "Item removed from favourites"
             Snackbar.make(view, messageText, Snackbar.LENGTH_SHORT)
-                    .setAction("View") {
-                        router.pushController(RouterTransaction.with(FavouritesController()))
-                    }
                     .show()
         }
     }

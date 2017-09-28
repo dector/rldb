@@ -2,8 +2,13 @@
 
     <string name="app_name">RLDB</string>
 
+    <string name="menu_item_favourites">Favourites</string>
+
     <!-- Item details -->
     <string name="item_details_add_to_favourites">Add to favourites</string>
     <string name="item_details_remove_from_favourites">Remove from favourites</string>
+
+    <!-- Favourites -->
+    <!--<string name="screen_title_favourites">Favourites</string>-->
 
 </resources>
