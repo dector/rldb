@@ -17,6 +17,7 @@ import com.bumptech.glide.module.AppGlideModule
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.controller_list.view.*
 import kotlinx.android.synthetic.main.view_list_item.view.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,9 +45,12 @@ class ListController : Controller() {
                 list.setHasFixedSize(true)
                 list.layoutManager = LinearLayoutManager(container.context)
                 list.adapter = ListItemsAdapter(inflater).apply {
-                    data = listOf(
-                            ListItemViewModel(title = "Nethack", description = "Nethack RL", imageUrl = "https://i.imgur.com/GOIK6wG.png"),
-                            ListItemViewModel(title = "Brogue", description = "Brogue RL", imageUrl = "https://i.imgur.com/IOqX1YS.png"))
+                    data = InMemoryGamesRepository().getAll().map {
+                        ListItemViewModel(
+                                title = it.name,
+                                description = it.description,
+                                imageUrl = it.imageUrl ?: "")
+                    }
                 }
             }
 }
@@ -102,4 +106,38 @@ class ItemDetailsController : Controller() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup) =
             inflater.inflate(R.layout.controller_item_details, container, false)
+}
+
+interface GamesRepository {
+
+    fun getAll(): List<Game>
+}
+
+class InMemoryGamesRepository : GamesRepository {
+
+    override fun getAll() = listOf(
+            Game(
+                    name = "Nethack",
+                    description = "Nethack RL",
+                    imageUrl = "https://i.imgur.com/GOIK6wG.png"
+            ),
+            Game(
+                    name = "Brogue",
+                    description = "Brogue RL",
+                    imageUrl = "https://i.imgur.com/IOqX1YS.png"
+            )
+    )
+}
+
+data class Game(
+        val name: String,
+        val description: String,
+        val imageUrl: String? = null,
+        val codingLanguage: String = "",
+        val platforms: List<Platform> = emptyList(),
+        val lastVersion: String = "",
+        val lastVersionDate: Date? = null)
+
+enum class Platform {
+    Windows, Linux, MacOS, Android, iOS
 }
