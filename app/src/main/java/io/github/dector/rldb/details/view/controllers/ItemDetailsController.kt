@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
+import com.bluelinelabs.conductor.RouterTransaction
 import io.github.dector.rldb.R
 import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
 import io.github.dector.rldb.domain.Uuid
+import io.github.dector.rldb.favourites.view.controllers.FavouritesController
 import io.github.dector.rldb.tools.GlideApp
 import kotlinx.android.synthetic.main.controller_item_details.view.*
 
@@ -27,5 +29,9 @@ class ItemDetailsController(private val itemUuid: Uuid) : Controller() {
                         .centerCrop()
                         .placeholder(R.drawable.placeholder_list_item_image)
                         .into(image)
+
+                favouritesButton.setOnClickListener {
+                    router.pushController(RouterTransaction.with(FavouritesController()))
+                }
             }
 }
