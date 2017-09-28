@@ -2,10 +2,11 @@ package io.github.dector.rldb.games_list.repositories
 
 import io.github.dector.rldb.common.repositories.GamesRepository
 import io.github.dector.rldb.domain.Game
+import io.github.dector.rldb.domain.Uuid
 
 class InMemoryGamesRepository : GamesRepository {
 
-    override fun getAll() = listOf(
+    private val storage = listOf(
             Game(
                     uuid = "40bc5462-b7dd-4dcf-9141-1f26885c0f33",
                     name = "Nethack",
@@ -19,4 +20,8 @@ class InMemoryGamesRepository : GamesRepository {
                     imageUrl = "https://i.imgur.com/IOqX1YS.png"
             )
     )
+
+    override fun getAll() = storage
+
+    override fun byUuid(uuid: Uuid) = storage.filter { it.uuid == uuid }.firstOrNull()
 }

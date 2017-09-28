@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import io.github.dector.rldb.R
-import io.github.dector.rldb.details.view.controllers.Uuid
+import io.github.dector.rldb.domain.Uuid
 import io.github.dector.rldb.games_list.view.view_holders.ListItemViewHolder
 import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
 

@@ -2,6 +2,9 @@ package io.github.dector.rldb.domain
 
 import java.util.*
 
+
+typealias Uuid = String
+
 data class Game(
         val uuid: String,
         val name: String,
