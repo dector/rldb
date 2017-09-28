@@ -3,6 +3,7 @@ package io.github.dector.rldb.domain
 import java.util.*
 
 data class Game(
+        val uuid: String,
         val name: String,
         val description: String,
         val imageUrl: String? = null,

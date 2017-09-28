@@ -1,16 +1,17 @@
 package io.github.dector.rldb.games_list.view.view_holders
 
-import android.support.design.widget.Snackbar
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import io.github.dector.rldb.R
+import io.github.dector.rldb.details.view.controllers.Uuid
 import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
 import io.github.dector.rldb.tools.GlideApp
 import kotlinx.android.synthetic.main.view_list_item.view.*
 
+
 class ListItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bind(vm: ListItemViewModel) {
+    fun bind(vm: ListItemViewModel, onItemSelected: (Uuid) -> Unit) {
         itemView.title.text = vm.title
         itemView.description.text = vm.description
 
@@ -21,7 +22,7 @@ class ListItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 .into(itemView.image)
 
         itemView.setOnClickListener {
-            Snackbar.make(itemView.rootView, "Selected: ${vm.title}", Snackbar.LENGTH_SHORT).show()
+            onItemSelected(vm.uuid)
         }
     }
 }
