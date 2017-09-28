@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
 import io.github.dector.rldb.R
+import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
 import io.github.dector.rldb.domain.Uuid
-import io.github.dector.rldb.games_list.repositories.InMemoryGamesRepository
 import io.github.dector.rldb.tools.GlideApp
 import kotlinx.android.synthetic.main.controller_item_details.view.*
 

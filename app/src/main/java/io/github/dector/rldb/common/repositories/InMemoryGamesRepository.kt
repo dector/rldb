@@ -1,6 +1,5 @@
-package io.github.dector.rldb.games_list.repositories
+package io.github.dector.rldb.common.repositories
 
-import io.github.dector.rldb.common.repositories.GamesRepository
 import io.github.dector.rldb.domain.Game
 import io.github.dector.rldb.domain.Uuid
 
