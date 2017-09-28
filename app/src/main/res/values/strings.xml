@@ -1,3 +1,9 @@
 <resources>
+
     <string name="app_name">RLDB</string>
+
+    <!-- Item details -->
+    <string name="item_details_add_to_favourites">Add to favourites</string>
+    <string name="item_details_remove_from_favourites">Remove from favourites</string>
+
 </resources>

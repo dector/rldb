@@ -13,7 +13,8 @@ data class Game(
         val codingLanguage: String = "",
         val platforms: List<Platform> = emptyList(),
         val lastVersion: String = "",
-        val lastVersionDate: Date? = null)
+        val lastVersionDate: Date? = null,
+        val metaFavourite: Boolean = false)
 
 enum class Platform {
     Windows, Linux, MacOS, Android, iOS
