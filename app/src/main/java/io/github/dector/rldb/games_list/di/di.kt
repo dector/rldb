@@ -14,14 +14,14 @@ import io.github.dector.rldb.R
 import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
 import io.github.dector.rldb.di.NavigationModule
 import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
-import io.github.dector.rldb.games_list.view.controllers.ListController
+import io.github.dector.rldb.games_list.view.controllers.GamesListController
 import io.github.dector.rldb.games_list.view.view_holders.ListItemViewHolder
 import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
 import kotlinx.android.synthetic.main.controller_list.view.*
 
 
 @Module
-class ListControllerModule(
+class GamesListControllerModule(
         private val context: Context,
         private val onListItemSelectedListener: ListItemsAdapter.OnItemSelectedListener) {
 
@@ -63,8 +63,8 @@ class ListControllerModule(
             = context as Activity
 }
 
-@Component(modules = arrayOf(NavigationModule::class, ListControllerModule::class))
+@Component(modules = arrayOf(NavigationModule::class, GamesListControllerModule::class))
 interface ListControllerComponent {
 
-    fun inject(controller: ListController)
+    fun inject(controller: GamesListController)
 }

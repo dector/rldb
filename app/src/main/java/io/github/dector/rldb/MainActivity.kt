@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
-import io.github.dector.rldb.games_list.view.controllers.ListController
+import io.github.dector.rldb.games_list.view.controllers.GamesListController
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         router = Conductor.attachRouter(this, root_container, savedInstanceState)
         if (!router.hasRootController())
-            router.setRoot(RouterTransaction.with(ListController()))
+            router.setRoot(RouterTransaction.with(GamesListController()))
     }
 
     override fun onBackPressed() {

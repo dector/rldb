@@ -7,14 +7,14 @@ import io.github.dector.rldb.R
 import io.github.dector.rldb.di.NavigationModule
 import io.github.dector.rldb.domain.Uuid
 import io.github.dector.rldb.games_list.di.DaggerListControllerComponent
-import io.github.dector.rldb.games_list.di.ListControllerModule
+import io.github.dector.rldb.games_list.di.GamesListControllerModule
 import io.github.dector.rldb.games_list.navigation.Navigation
 import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
 import javax.inject.Inject
 import javax.inject.Provider
 
 
-class ListController : Controller() {
+class GamesListController : Controller() {
 
     @Inject lateinit var viewProvider: Provider<View>
 
@@ -31,7 +31,7 @@ class ListController : Controller() {
         // FIXME will be called again when context will be changed
         DaggerListControllerComponent.builder()
                 .navigationModule(NavigationModule(router))
-                .listControllerModule(ListControllerModule(context, onItemSelectedListener))
+                .gamesListControllerModule(GamesListControllerModule(context, onItemSelectedListener))
                 .build()
                 .inject(this)
     }
