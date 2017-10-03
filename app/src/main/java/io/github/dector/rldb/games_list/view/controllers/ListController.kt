@@ -3,13 +3,12 @@ package io.github.dector.rldb.games_list.view.controllers
 import android.content.Context
 import android.view.*
 import com.bluelinelabs.conductor.Controller
-import com.bluelinelabs.conductor.RouterTransaction
 import io.github.dector.rldb.R
-import io.github.dector.rldb.details.view.controllers.ItemDetailsController
-import io.github.dector.rldb.di.DaggerListControllerComponent
-import io.github.dector.rldb.di.ListControllerModule
+import io.github.dector.rldb.di.NavigationModule
 import io.github.dector.rldb.domain.Uuid
-import io.github.dector.rldb.favourites.view.controllers.FavouritesController
+import io.github.dector.rldb.games_list.di.DaggerListControllerComponent
+import io.github.dector.rldb.games_list.di.ListControllerModule
+import io.github.dector.rldb.games_list.navigation.Navigation
 import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
 import javax.inject.Inject
 import javax.inject.Provider
@@ -18,6 +17,8 @@ import javax.inject.Provider
 class ListController : Controller() {
 
     @Inject lateinit var viewProvider: Provider<View>
+
+    @Inject lateinit var navigation: Navigation
 
     private val onItemSelectedListener = object : ListItemsAdapter.OnItemSelectedListener {
 
@@ -29,6 +30,7 @@ class ListController : Controller() {
     override fun onContextAvailable(context: Context) {
         // FIXME will be called again when context will be changed
         DaggerListControllerComponent.builder()
+                .navigationModule(NavigationModule(router))
                 .listControllerModule(ListControllerModule(context, onItemSelectedListener))
                 .build()
                 .inject(this)
@@ -38,7 +40,7 @@ class ListController : Controller() {
             viewProvider.get()
 
     private fun openDetails(uuid: Uuid) {
-        router.pushController(RouterTransaction.with(ItemDetailsController(uuid)))
+        navigation.gotoDetails(uuid)
     }
 
     override fun onAttach(view: View) {
@@ -52,7 +54,7 @@ class ListController : Controller() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.favourites -> router.pushController(RouterTransaction.with(FavouritesController()))
+            R.id.favourites -> navigation.gotoFavourites()
             else -> return super.onOptionsItemSelected(item)
         }
 

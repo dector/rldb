@@ -1,69 +1,34 @@
 package io.github.dector.rldb.di
 
-import android.app.Activity
-import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import com.bluelinelabs.conductor.Router
+import com.bluelinelabs.conductor.RouterTransaction
 import dagger.Component
 import dagger.Module
 import dagger.Provides
-import io.github.dector.rldb.R
-import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
-import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
-import io.github.dector.rldb.games_list.view.controllers.ListController
-import io.github.dector.rldb.games_list.view.view_holders.ListItemViewHolder
-import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
-import kotlinx.android.synthetic.main.controller_list.view.*
+import io.github.dector.rldb.details.view.controllers.ItemDetailsController
+import io.github.dector.rldb.domain.Uuid
+import io.github.dector.rldb.favourites.view.controllers.FavouritesController
+import io.github.dector.rldb.games_list.navigation.Navigation
 
+
+@Component(modules = arrayOf(NavigationModule::class))
+interface NavigationComponent
 
 @Module
-class ListControllerModule(
-        private val context: Context,
-        private val onListItemSelectedListener: ListItemsAdapter.OnItemSelectedListener) {
+class NavigationModule(private val router: Router) {
 
-    @Provides fun layoutInflater(): LayoutInflater
-            = LayoutInflater.from(context)
+    @Provides fun router(): Router
+            = router
 
-    @Provides fun layoutManager(): RecyclerView.LayoutManager
-            = LinearLayoutManager(context)
+    @Provides fun navigation(router: Router): Navigation
+            = object : Navigation {
 
-    @Provides fun listAdapter(inflater: LayoutInflater): RecyclerView.Adapter<ListItemViewHolder> {
-        return ListItemsAdapter(inflater, onListItemSelectedListener::onItemSelected).apply {
-            data = InMemoryGamesRepository().getAll().map {
-                ListItemViewModel(
-                        uuid = it.uuid,
-                        title = it.name,
-                        description = it.description,
-                        imageUrl = it.imageUrl ?: "")
-            }
+        override fun gotoFavourites() {
+            router.pushController(RouterTransaction.with(FavouritesController()))
+        }
+
+        override fun gotoDetails(uuid: Uuid) {
+            router.pushController(RouterTransaction.with(ItemDetailsController(uuid)))
         }
     }
-
-    @Provides fun viewBuilder(
-            inflater: LayoutInflater,
-            rootView: ViewGroup,
-            layoutManager: RecyclerView.LayoutManager,
-            listAdapter: RecyclerView.Adapter<ListItemViewHolder>): View {
-        return inflater.inflate(R.layout.controller_list, rootView, false).apply {
-            list.setHasFixedSize(true)
-            list.layoutManager = layoutManager
-            list.adapter = listAdapter
-        }
-    }
-
-    @Provides fun activityRootView(activity: Activity): ViewGroup
-            = activity.findViewById(R.id.root_container)
-
-    // FIXME get rid of cast
-    @Provides fun activity(): Activity
-            = context as Activity
-}
-
-@Component(modules = arrayOf(ListControllerModule::class))
-interface ListControllerComponent {
-
-    fun inject(controller: ListController)
 }
