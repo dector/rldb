@@ -1,35 +1,41 @@
 package io.github.dector.rldb.games_list.view.controllers
 
-import android.support.v7.widget.LinearLayoutManager
+import android.content.Context
 import android.view.*
 import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.RouterTransaction
 import io.github.dector.rldb.R
-import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
 import io.github.dector.rldb.details.view.controllers.ItemDetailsController
+import io.github.dector.rldb.di.DaggerListControllerComponent
+import io.github.dector.rldb.di.ListControllerModule
 import io.github.dector.rldb.domain.Uuid
 import io.github.dector.rldb.favourites.view.controllers.FavouritesController
 import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
-import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
-import kotlinx.android.synthetic.main.controller_list.view.*
+import javax.inject.Inject
+import javax.inject.Provider
 
 
 class ListController : Controller() {
 
+    @Inject lateinit var viewProvider: Provider<View>
+
+    private val onItemSelectedListener = object : ListItemsAdapter.OnItemSelectedListener {
+
+        override fun onItemSelected(uuid: Uuid) {
+            openDetails(uuid)
+        }
+    }
+
+    override fun onContextAvailable(context: Context) {
+        // FIXME will be called again when context will be changed
+        DaggerListControllerComponent.builder()
+                .listControllerModule(ListControllerModule(context, onItemSelectedListener))
+                .build()
+                .inject(this)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup) =
-            inflater.inflate(R.layout.controller_list, container, false).apply {
-                list.setHasFixedSize(true)
-                list.layoutManager = LinearLayoutManager(container.context)
-                list.adapter = ListItemsAdapter(inflater, { uuid -> openDetails(uuid) }).apply {
-                    data = InMemoryGamesRepository().getAll().map {
-                        ListItemViewModel(
-                                uuid = it.uuid,
-                                title = it.name,
-                                description = it.description,
-                                imageUrl = it.imageUrl ?: "")
-                    }
-                }
-            }
+            viewProvider.get()
 
     private fun openDetails(uuid: Uuid) {
         router.pushController(RouterTransaction.with(ItemDetailsController(uuid)))

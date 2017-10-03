@@ -14,6 +14,11 @@ class ListItemsAdapter(
         private val onItemSelected: (Uuid) -> Unit)
     : RecyclerView.Adapter<ListItemViewHolder>() {
 
+    interface OnItemSelectedListener {
+
+        fun onItemSelected(uuid: Uuid)
+    }
+
     private val _data = mutableListOf<ListItemViewModel>()
 
     var data: List<ListItemViewModel>
