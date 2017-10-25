@@ -19,6 +19,18 @@ class InMemoryGamesRepository : GamesRepository {
                         name = "Brogue",
                         description = "Brogue RL",
                         imageUrl = "https://i.imgur.com/IOqX1YS.png"
+                ),
+                Game(
+                        uuid = "41bc5462-b7dd-4dcf-9141-1f26885c0f33",
+                        name = "Nethack (2)",
+                        description = "Nethack RL (2)",
+                        imageUrl = "https://i.imgur.com/GOIK6wG.png"
+                ),
+                Game(
+                        uuid = "4328f604-ab6d-46ab-b839-5bbc73d87ca5",
+                        name = "Brogue (2)",
+                        description = "Brogue RL (2)",
+                        imageUrl = "https://i.imgur.com/IOqX1YS.png"
                 )
         )
     }
@@ -29,8 +41,7 @@ class InMemoryGamesRepository : GamesRepository {
             .filter { it.metaFavourite }
 
     override fun byUuid(uuid: Uuid) = storage
-            .filter { it.uuid == uuid }
-            .firstOrNull()
+            .firstOrNull { it.uuid == uuid }
 
     override fun toggleFavourite(uuid: Uuid, onSucceed: (item: Game) -> Unit) {
         val storedItem = byUuid(uuid) ?: return
