@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="primary">#607D8B</color>
+    <color name="primaryDark">#455A64</color>
+    <color name="accent">#FF5722</color>
+    <color name="textPrimary">#212121</color>
+
+    <!-- Games List -->
+    <color name="listItem_title_background">#aa000000</color>
+    <color name="listItem_title_textColor">#ffffff</color>
+    <color name="listItem_description_textColor">#ffffff</color>
+
 </resources>
