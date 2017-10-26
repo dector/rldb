@@ -4,13 +4,13 @@ import android.content.Context
 import android.view.*
 import com.bluelinelabs.conductor.Controller
 import io.github.dector.rldb.R
-import io.github.dector.rldb.di.NavigationModule
-import io.github.dector.rldb.domain.Uuid
+import io.github.dector.rldb.common.di.NavigationModule
+import io.github.dector.rldb.common.domain.Uuid
+import io.github.dector.rldb.common.tools.i
 import io.github.dector.rldb.games_list.di.DaggerListControllerComponent
 import io.github.dector.rldb.games_list.di.GamesListControllerModule
 import io.github.dector.rldb.games_list.navigation.Navigation
 import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
-import io.github.dector.rldb.tools.i
 import javax.inject.Inject
 import javax.inject.Provider
 

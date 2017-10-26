@@ -9,12 +9,12 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import io.github.dector.rldb.R
+import io.github.dector.rldb.common.di.NavigationModule
+import io.github.dector.rldb.common.di.RepositoriesModule
+import io.github.dector.rldb.common.domain.Game
 import io.github.dector.rldb.common.repositories.GamesRepository
+import io.github.dector.rldb.common.tools.GlideApp
 import io.github.dector.rldb.details.view.controllers.ItemDetailsController
-import io.github.dector.rldb.di.NavigationModule
-import io.github.dector.rldb.di.RepositoriesModule
-import io.github.dector.rldb.domain.Game
-import io.github.dector.rldb.tools.GlideApp
 import kotlinx.android.synthetic.main.controller_item_details.view.*
 
 @Module

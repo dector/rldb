@@ -11,8 +11,8 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import io.github.dector.rldb.R
+import io.github.dector.rldb.common.di.NavigationModule
 import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
-import io.github.dector.rldb.di.NavigationModule
 import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
 import io.github.dector.rldb.games_list.view.controllers.GamesListController
 import io.github.dector.rldb.games_list.view.view_holders.ListItemViewHolder

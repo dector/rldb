@@ -2,8 +2,8 @@ package io.github.dector.rldb
 
 import android.app.Application
 import com.orhanobut.logger.Logger
-import io.github.dector.rldb.tools.LoggerTree
-import io.github.dector.rldb.tools.createLogAdapter
+import io.github.dector.rldb.common.tools.LoggerTree
+import io.github.dector.rldb.common.tools.createLogAdapter
 import timber.log.Timber
 
 class App : Application() {

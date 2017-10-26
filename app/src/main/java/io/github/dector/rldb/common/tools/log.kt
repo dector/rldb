@@ -1,4 +1,4 @@
-package io.github.dector.rldb.tools
+package io.github.dector.rldb.common.tools
 
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.LogAdapter

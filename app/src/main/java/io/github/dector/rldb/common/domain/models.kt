@@ -1,4 +1,4 @@
-package io.github.dector.rldb.domain
+package io.github.dector.rldb.common.domain
 
 import java.util.*
 

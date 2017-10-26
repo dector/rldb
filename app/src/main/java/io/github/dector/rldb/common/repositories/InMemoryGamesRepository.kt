@@ -1,7 +1,7 @@
 package io.github.dector.rldb.common.repositories
 
-import io.github.dector.rldb.domain.Game
-import io.github.dector.rldb.domain.Uuid
+import io.github.dector.rldb.common.domain.Game
+import io.github.dector.rldb.common.domain.Uuid
 
 class InMemoryGamesRepository : GamesRepository {
 

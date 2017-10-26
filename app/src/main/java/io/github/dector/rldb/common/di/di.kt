@@ -1,14 +1,14 @@
-package io.github.dector.rldb.di
+package io.github.dector.rldb.common.di
 
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import io.github.dector.rldb.common.domain.Uuid
 import io.github.dector.rldb.common.repositories.GamesRepository
 import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
 import io.github.dector.rldb.details.view.controllers.ItemDetailsController
-import io.github.dector.rldb.domain.Uuid
 import io.github.dector.rldb.favourites.view.controllers.FavouritesController
 import io.github.dector.rldb.games_list.navigation.Navigation
 

@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
 import io.github.dector.rldb.R
+import io.github.dector.rldb.common.di.RepositoriesModule
+import io.github.dector.rldb.common.domain.Uuid
 import io.github.dector.rldb.common.repositories.GamesRepository
 import io.github.dector.rldb.details.di.DaggerItemDetailsComponent
 import io.github.dector.rldb.details.di.ItemDetailsModule
-import io.github.dector.rldb.di.RepositoriesModule
-import io.github.dector.rldb.domain.Uuid
 import kotlinx.android.synthetic.main.controller_item_details.view.*
 import javax.inject.Inject
 import javax.inject.Provider
