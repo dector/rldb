@@ -5,12 +5,12 @@ import android.view.*
 import com.bluelinelabs.conductor.Controller
 import io.github.dector.rldb.R
 import io.github.dector.rldb.common.di.NavigationModule
-import io.github.dector.rldb.common.domain.Uuid
 import io.github.dector.rldb.common.navigation.Navigation
 import io.github.dector.rldb.common.tools.i
 import io.github.dector.rldb.list.di.DaggerListControllerComponent
 import io.github.dector.rldb.list.di.GamesListControllerModule
 import io.github.dector.rldb.list.view.adapters.ListItemsAdapter
+import io.github.dector.rldb.list.viewmodels.ListItemViewModel
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -23,10 +23,10 @@ class GamesListController : Controller() {
 
     private val onItemSelectedListener = object : ListItemsAdapter.OnItemSelectedListener {
 
-        override fun onItemSelected(uuid: Uuid) {
-            i { "Selected item: $uuid" }
+        override fun onItemSelected(item: ListItemViewModel) {
+            i { "Selected item: ${item.title}" }
 
-            openDetails(uuid)
+            navigation.gotoDetails(item.uuid)
         }
     }
 
@@ -41,10 +41,6 @@ class GamesListController : Controller() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup) =
             viewProvider.get()
-
-    private fun openDetails(uuid: Uuid) {
-        navigation.gotoDetails(uuid)
-    }
 
     override fun onAttach(view: View) {
         super.onAttach(view)

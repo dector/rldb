@@ -16,8 +16,8 @@ class AppNavigation(
         navigateTo(FavouritesController())
     }
 
-    override fun gotoDetails(uuid: Uuid) {
-        navigateTo(ItemDetailsController(uuid))
+    override fun gotoDetails(itemUuid: Uuid) {
+        navigateTo(ItemDetailsController(itemUuid))
     }
 
     private fun navigateTo(controller: Controller) = router.pushController(transaction(controller))

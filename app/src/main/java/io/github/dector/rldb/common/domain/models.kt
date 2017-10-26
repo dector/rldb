@@ -6,7 +6,7 @@ import java.util.*
 typealias Uuid = String
 
 data class Game(
-        val uuid: String,
+        val uuid: Uuid,
         val name: String,
         val description: String,
         val imageUrl: String? = null,

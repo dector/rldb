@@ -20,7 +20,7 @@ import javax.inject.Provider
 
 class ItemDetailsController(private val itemUuid: Uuid) : Controller() {
 
-    constructor(state: Bundle) : this(state.getString("uuid", ""))
+    constructor(state: Bundle) : this(state.getString(STATE_UUID, ""))
 
     @Inject lateinit var viewProvider: Provider<View>
 
@@ -61,3 +61,7 @@ class ItemDetailsController(private val itemUuid: Uuid) : Controller() {
         view?.favouritesButton?.text = view?.resources?.getString(textResource)
     }
 }
+
+// State constants {
+private const val STATE_UUID = "uuid"
+// }

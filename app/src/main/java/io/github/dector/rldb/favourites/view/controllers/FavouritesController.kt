@@ -18,7 +18,7 @@ class FavouritesController : Controller() {
         list.setHasFixedSize(true)
         list.layoutManager = LinearLayoutManager(inflater.context)
 
-        list.adapter = ListItemsAdapter(inflater, {}).apply {
+        list.adapter = ListItemsAdapter(inflater, emptySelectedListener()).apply {
             data = InMemoryGamesRepository().getFavourite().map {
                 ListItemViewModel(
                         uuid = it.uuid,
@@ -27,5 +27,10 @@ class FavouritesController : Controller() {
                         imageUrl = it.imageUrl ?: "")
             }
         }
+    }
+
+    private fun emptySelectedListener() = object : ListItemsAdapter.OnItemSelectedListener {
+
+        override fun onItemSelected(item: ListItemViewModel) {}
     }
 }

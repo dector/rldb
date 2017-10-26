@@ -6,5 +6,5 @@ interface Navigation {
 
     fun gotoFavourites()
 
-    fun gotoDetails(uuid: Uuid)
+    fun gotoDetails(itemUuid: Uuid)
 }

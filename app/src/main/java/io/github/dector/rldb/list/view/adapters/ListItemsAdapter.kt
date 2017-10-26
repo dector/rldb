@@ -4,19 +4,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import io.github.dector.rldb.R
-import io.github.dector.rldb.common.domain.Uuid
 import io.github.dector.rldb.list.view.view_holders.ListItemViewHolder
 import io.github.dector.rldb.list.viewmodels.ListItemViewModel
 
 
 class ListItemsAdapter(
         private val inflater: LayoutInflater,
-        private val onItemSelected: (Uuid) -> Unit)
+        private val onItemSelected: OnItemSelectedListener)
     : RecyclerView.Adapter<ListItemViewHolder>() {
 
     interface OnItemSelectedListener {
 
-        fun onItemSelected(uuid: Uuid)
+        fun onItemSelected(item: ListItemViewModel)
     }
 
     private val _data = mutableListOf<ListItemViewModel>()

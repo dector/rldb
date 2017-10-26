@@ -32,7 +32,7 @@ class GamesListControllerModule(
             = LinearLayoutManager(context)
 
     @Provides fun listAdapter(inflater: LayoutInflater): RecyclerView.Adapter<ListItemViewHolder> {
-        return ListItemsAdapter(inflater, onListItemSelectedListener::onItemSelected).apply {
+        return ListItemsAdapter(inflater, onListItemSelectedListener).apply {
             data = InMemoryGamesRepository().getAll().map {
                 ListItemViewModel(
                         uuid = it.uuid,
