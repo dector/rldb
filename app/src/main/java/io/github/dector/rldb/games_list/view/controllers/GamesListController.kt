@@ -10,6 +10,7 @@ import io.github.dector.rldb.games_list.di.DaggerListControllerComponent
 import io.github.dector.rldb.games_list.di.GamesListControllerModule
 import io.github.dector.rldb.games_list.navigation.Navigation
 import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
+import io.github.dector.rldb.tools.i
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -23,6 +24,8 @@ class GamesListController : Controller() {
     private val onItemSelectedListener = object : ListItemsAdapter.OnItemSelectedListener {
 
         override fun onItemSelected(uuid: Uuid) {
+            i { "Selected item: $uuid" }
+
             openDetails(uuid)
         }
     }

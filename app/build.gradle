@@ -50,6 +50,10 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.11'
     kapt 'com.google.dagger:dagger-compiler:2.11'
 
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.5.1'
+    implementation 'com.orhanobut:logger:2.1.1'
+
     // --- Unit Testing
 
     //JUnit
