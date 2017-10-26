@@ -1,4 +1,4 @@
-package io.github.dector.rldb.games_list.viewmodels
+package io.github.dector.rldb.list.viewmodels
 
 data class ListItemViewModel(
         val uuid: String,

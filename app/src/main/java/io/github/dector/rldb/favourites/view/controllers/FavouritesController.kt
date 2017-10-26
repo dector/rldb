@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
 import io.github.dector.rldb.R
 import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
-import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
-import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
+import io.github.dector.rldb.list.view.adapters.ListItemsAdapter
+import io.github.dector.rldb.list.viewmodels.ListItemViewModel
 import kotlinx.android.synthetic.main.controller_favourites.view.*
 
 

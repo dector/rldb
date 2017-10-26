@@ -1,12 +1,12 @@
-package io.github.dector.rldb.games_list.view.adapters
+package io.github.dector.rldb.list.view.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import io.github.dector.rldb.R
 import io.github.dector.rldb.common.domain.Uuid
-import io.github.dector.rldb.games_list.view.view_holders.ListItemViewHolder
-import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
+import io.github.dector.rldb.list.view.view_holders.ListItemViewHolder
+import io.github.dector.rldb.list.viewmodels.ListItemViewModel
 
 
 class ListItemsAdapter(

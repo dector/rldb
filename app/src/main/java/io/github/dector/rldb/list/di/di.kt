@@ -1,4 +1,4 @@
-package io.github.dector.rldb.games_list.di
+package io.github.dector.rldb.list.di
 
 import android.app.Activity
 import android.content.Context
@@ -13,10 +13,10 @@ import dagger.Provides
 import io.github.dector.rldb.R
 import io.github.dector.rldb.common.di.NavigationModule
 import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
-import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
-import io.github.dector.rldb.games_list.view.controllers.GamesListController
-import io.github.dector.rldb.games_list.view.view_holders.ListItemViewHolder
-import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
+import io.github.dector.rldb.list.view.adapters.ListItemsAdapter
+import io.github.dector.rldb.list.view.controllers.GamesListController
+import io.github.dector.rldb.list.view.view_holders.ListItemViewHolder
+import io.github.dector.rldb.list.viewmodels.ListItemViewModel
 import kotlinx.android.synthetic.main.controller_list.view.*
 
 

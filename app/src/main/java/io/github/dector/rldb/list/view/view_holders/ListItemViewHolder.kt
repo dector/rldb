@@ -1,11 +1,11 @@
-package io.github.dector.rldb.games_list.view.view_holders
+package io.github.dector.rldb.list.view.view_holders
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import io.github.dector.rldb.R
 import io.github.dector.rldb.common.domain.Uuid
 import io.github.dector.rldb.common.tools.GlideApp
-import io.github.dector.rldb.games_list.viewmodels.ListItemViewModel
+import io.github.dector.rldb.list.viewmodels.ListItemViewModel
 import kotlinx.android.synthetic.main.view_list_item.view.*
 
 
