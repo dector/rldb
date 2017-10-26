@@ -1,16 +1,13 @@
 package io.github.dector.rldb.common.di
 
 import com.bluelinelabs.conductor.Router
-import com.bluelinelabs.conductor.RouterTransaction
 import dagger.Component
 import dagger.Module
 import dagger.Provides
-import io.github.dector.rldb.common.domain.Uuid
+import io.github.dector.rldb.common.navigation.AppNavigation
+import io.github.dector.rldb.common.navigation.Navigation
 import io.github.dector.rldb.common.repositories.GamesRepository
 import io.github.dector.rldb.common.repositories.InMemoryGamesRepository
-import io.github.dector.rldb.details.view.controllers.ItemDetailsController
-import io.github.dector.rldb.favourites.view.controllers.FavouritesController
-import io.github.dector.rldb.games_list.navigation.Navigation
 
 
 @Component(modules = arrayOf(NavigationModule::class))
@@ -23,16 +20,7 @@ class NavigationModule(private val router: Router) {
             = router
 
     @Provides fun navigation(router: Router): Navigation
-            = object : Navigation {
-
-        override fun gotoFavourites() {
-            router.pushController(RouterTransaction.with(FavouritesController()))
-        }
-
-        override fun gotoDetails(uuid: Uuid) {
-            router.pushController(RouterTransaction.with(ItemDetailsController(uuid)))
-        }
-    }
+            = AppNavigation(router)
 }
 
 @Module

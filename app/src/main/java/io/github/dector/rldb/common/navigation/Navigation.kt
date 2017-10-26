@@ -1,4 +1,4 @@
-package io.github.dector.rldb.games_list.navigation
+package io.github.dector.rldb.common.navigation
 
 import io.github.dector.rldb.common.domain.Uuid
 

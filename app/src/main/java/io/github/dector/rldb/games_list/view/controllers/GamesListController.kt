@@ -6,10 +6,10 @@ import com.bluelinelabs.conductor.Controller
 import io.github.dector.rldb.R
 import io.github.dector.rldb.common.di.NavigationModule
 import io.github.dector.rldb.common.domain.Uuid
+import io.github.dector.rldb.common.navigation.Navigation
 import io.github.dector.rldb.common.tools.i
 import io.github.dector.rldb.games_list.di.DaggerListControllerComponent
 import io.github.dector.rldb.games_list.di.GamesListControllerModule
-import io.github.dector.rldb.games_list.navigation.Navigation
 import io.github.dector.rldb.games_list.view.adapters.ListItemsAdapter
 import javax.inject.Inject
 import javax.inject.Provider
